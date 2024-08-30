@@ -19,16 +19,16 @@ function convertToPoint(card) {
     K: 13,
   };
 
-  return addtionalPoint[card[0]] + typeof card[1] === "number"
+  return addtionalPoint[card[0]] + (typeof card[1] === "number"
     ? card[1]
-    : charToNumber[card[1]];
+    : charToNumber[card[1]]);
 }
 
 function bubbleSort(array) {
   array.map((e1) =>
     array.map((e2, i) => {
-      if (convertToPoint(array[i]) > convertToPoint(array[i + 1])) {
-        array[i] = array[i + 1];
+      if (i < array.length - 1 && convertToPoint(array[i]) > convertToPoint(array[i + 1])) {
+        array[i] = array[i + 1]; // 작은 다음 요소를 현재에 넣고, 큰 현재 요소e2를 다음에 넣어라 
         array[i + 1] = e2;
       }
     })
@@ -36,4 +36,5 @@ function bubbleSort(array) {
   return array;
 }
 
-bubbleSort(cards);
+console.log(bubbleSort(cards));
+
